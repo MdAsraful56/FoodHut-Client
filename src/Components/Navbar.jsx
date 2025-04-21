@@ -3,15 +3,15 @@ import React from 'react';
 const Navbar = () => {
 
     const navOptions = <>
-                        <li><a>Item 1</a></li>
-                        <li><a>Parent</a></li>
-                        <li><a>Item 3</a></li>
+                        <li><a>Home</a></li>
+                        <li><a>Abouts</a></li>
+                        <li><a>All</a></li>
     </>
 
 
     return (
         <div>
-            <div className="navbar bg-base-100 shadow-sm">
+            <div className="navbar max-w-screen-xl fixed z-100 text-white bg-[#22302a7a] shadow-sm">
                 <div className="navbar-start">
                     <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
