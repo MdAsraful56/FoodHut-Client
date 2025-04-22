@@ -1,0 +1,9 @@
+.featurd-items {
+    background-image: url('../src/assets/home/featured.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.featurd-items-shadow {
+    background-color: rgba(0, 0, 0, 0.5);
+}
