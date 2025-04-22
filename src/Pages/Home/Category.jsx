@@ -14,11 +14,13 @@ import swiper02 from '../../assets/home/slide2.jpg';
 import swiper03 from '../../assets/home/slide3.jpg';
 import swiper04 from '../../assets/home/slide4.jpg';
 import swiper05 from '../../assets/home/slide5.jpg';
+import SectionTitle from '../../Components/SectionTitle';
 
 
 const Category = () => {
     return (
         <div>
+            <SectionTitle heading={'ORDER ONLINE'} subHeading={'From 11:00am to 10:00pm'} />
             <Swiper
                 slidesPerView={3}
                 spaceBetween={30}
