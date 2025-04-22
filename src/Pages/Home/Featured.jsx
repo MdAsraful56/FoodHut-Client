@@ -4,12 +4,12 @@ import featuredImg from '../../assets/home/featured.jpg';
 
 const Featured = () => {
     return (
-        <div className='featurd-items text-white'>
-            <div className="featurd-items-shadow pb-20 pt-12 my-20">
+        <div className='featurd-items bg-fixed text-white'>
+            <div className="featurd-items-shadow pb-20 pt-12 my-20 ">
                 <SectionTitle heading={'From our menu'} subHeading={"Check it Out"} />
                 <div className="md:flex justify-center items-center gap-4 px-20">
                     <div className="">
-                        <img src={featuredImg} alt="" className="" />
+                        <img src={featuredImg} alt="" className="rounded-xl" />
                     </div>
                     <div className="md:ml-5 space-y-2">
                         <h5 className="text-lg">March 20, 2026</h5>
