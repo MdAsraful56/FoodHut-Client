@@ -2,6 +2,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import './App.css'
 import MainLayout from './Layouts/MainLayout'
 import Home from './Pages/Home/Home'
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 function App() {
 
@@ -17,9 +18,11 @@ function App() {
 
 
   return (
-    <div className='max-w-screen-xl mx-auto'>
-      <RouterProvider router={router} />
-    </div>
+    <HelmetProvider>
+      <div className='max-w-screen-xl mx-auto'>
+        <RouterProvider router={router} />
+      </div>
+    </HelmetProvider>
   )
 }
 

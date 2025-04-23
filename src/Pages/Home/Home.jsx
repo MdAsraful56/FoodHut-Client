@@ -7,6 +7,8 @@ import Testimonials from './Testimonials';
 import CardSection from './CardSection';
 // import Poster from '../../Components/Poster';
 import HomePoster from './HomePoster';
+import { Helmet } from 'react-helmet-async';
+// import { Helmet } from 'react-helmet';
 
 
 
@@ -14,6 +16,9 @@ const Home = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>FoodHut || Home</title>
+            </Helmet>
             <Banner />
             <Category />
             <HomePoster />
