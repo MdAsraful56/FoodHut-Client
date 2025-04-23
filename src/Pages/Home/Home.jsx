@@ -4,6 +4,7 @@ import Category from './Category';
 import PopularMenu from './PopularMenu';
 import Featured from './Featured';
 import Testimonials from './Testimonials';
+import CardSection from './CardSection';
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             <Banner />
             <Category />
             <PopularMenu />
+            <CardSection />
             <Featured />
             <Testimonials />
         </div>
