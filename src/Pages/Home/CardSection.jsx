@@ -18,7 +18,7 @@ const CardSection = () => {
 
     return (
         <div className='mt-16'>
-            <section className="bg-black text-white p-10 text-center md:mx-32 mx-10">
+            <section className="bg-black text-white p-10 my-28 text-center md:mx-32 mx-10">
                 <h2 className="text-4xl">Call Us: +8801889245756</h2>
             </section>
             <section className="">
