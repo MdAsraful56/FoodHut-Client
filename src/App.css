@@ -7,3 +7,7 @@
 .featurd-items-shadow {
     background-color: rgba(0, 0, 0, 0.5);
 }
+
+.poster {
+    background-image: url('../src/assets/home/chef-service.jpg');
+}
