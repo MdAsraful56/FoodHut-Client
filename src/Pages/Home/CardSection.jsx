@@ -6,6 +6,7 @@ const CardSection = () => {
 
     const [menuItems, setMenuItems] = useState([]);
 
+
     useEffect( () => {
         fetch('../../../public/Data/homepageMenu.json')
             .then(res => res.json())

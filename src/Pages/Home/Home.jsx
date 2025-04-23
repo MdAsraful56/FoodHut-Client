@@ -8,7 +8,10 @@ import CardSection from './CardSection';
 // import Poster from '../../Components/Poster';
 import HomePoster from './HomePoster';
 
+
+
 const Home = () => {
+
     return (
         <div>
             <Banner />
