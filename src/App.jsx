@@ -5,6 +5,7 @@ import Home from './Pages/Home/Home'
 import { HelmetProvider } from 'react-helmet-async';
 import Menu from './Pages/OurMenu/Menu';
 import Order from './Pages/Orders/Order';
+import Login from './Pages/Login/Login';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Route path='/menu' element={ <Menu/> } />
         <Route path='/order' element={ <Order/> } />
         <Route path='/order/:category' element={ <Order/> } />
+        <Route path='/login' element={ <Login/> } />
       </Route>
     )
   )
