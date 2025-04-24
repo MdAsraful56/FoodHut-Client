@@ -2,7 +2,8 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import './App.css'
 import MainLayout from './Layouts/MainLayout'
 import Home from './Pages/Home/Home'
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider } from 'react-helmet-async';
+import Menu from './Pages/OurMenu/Menu';
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
     createRoutesFromElements(
       <Route path='/' element={ <MainLayout/> } >
         <Route index element={ <Home/> } />
+        <Route path='/menu' element={ <Menu/> } />
       </Route>
     )
   )
