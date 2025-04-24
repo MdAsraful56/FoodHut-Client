@@ -13,4 +13,25 @@
 }
 
 
-/* text-[#111111a6] */
+
+
+/* pagination  */
+
+
+.mySwiper .swiper-pagination-bullet {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    /* line-height: 20px; */
+    font-weight: 400;
+    font-size: 18px;
+    color: #000;
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.mySwiper .swiper-pagination-bullet-active {
+    color: #fff;
+    background: #007aff;
+}
+

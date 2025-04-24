@@ -8,10 +8,10 @@ const CardSection = () => {
 
 
     useEffect( () => {
-        fetch('../../../public/Data/homepageMenu.json')
+        fetch('http://localhost:5000/menu')
             .then(res => res.json())
             .then(data => {
-                setMenuItems(data);
+                setMenuItems(data.slice(0, 3));
             })
     } ,[])
 
