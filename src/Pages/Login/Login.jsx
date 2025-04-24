@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { Helmet } from 'react-helmet-async';
 import loginImg from '../../assets/others/authentication2.png';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
@@ -17,6 +17,11 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
 
     const { signInUser } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     useEffect( () => {
         loadCaptchaEnginge(6); // 6 characters captcha
@@ -42,6 +47,7 @@ const Login = () => {
                     draggable: true
                 });
                 form.reset();
+                navigate(from, {replace: true});
             })
 
     }

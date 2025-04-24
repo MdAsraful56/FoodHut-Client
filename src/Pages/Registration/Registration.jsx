@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../../Providers/AuthProvider';
 import loginImg from '../../assets/others/authentication2.png';
 import Swal from 'sweetalert2';
@@ -8,8 +8,8 @@ import Swal from 'sweetalert2';
 const Registration = () => {
 
     const [showPassword, setShowPassword] = useState(false)
-
-    const { createUser } = useContext(AuthContext)
+    const { createUser, updateUserProfile, logOut } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleRegistration = (e) => {
         e.preventDefault()
@@ -26,12 +26,27 @@ const Registration = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                Swal.fire({
-                    title: "Registration Successful",
-                    icon: "success",
-                    draggable: true
-                });
-                form.reset();
+                updateUserProfile(name, photo)
+                    .then(() => {
+                        console.log('User profile updated successfully');
+                        Swal.fire({
+                            title: "Registration Successful",
+                            icon: "success",
+                            draggable: true
+                        });
+                        form.reset();
+                        navigate('/login', {replace: true});
+                        logOut()
+                            .then(() => {
+                                console.log('Logout Successful');
+                            })
+                            .catch(error => {
+                                console.log(error.message);
+                            })
+                    })
+                    .catch(error => {
+                        console.log('Error updating user profile:', error.message);
+                    })
                 
             })
 

@@ -29,7 +29,7 @@ const Navbar = () => {
                         {
                             user ? <>
                                 {/* <li><Link to='/dashboard'>Dashboard</Link></li> */}
-                                <li><Link onClick={handleLogOut} >Logout</Link></li>
+                                {/* <li><Link onClick={handleLogOut} >Logout</Link></li> */}
                             </> : 
                             <>
                                 <li><Link to='/Login'>Login</Link></li>
@@ -61,7 +61,27 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    {
+                        user ? <>
+                    <div className="dropdown dropdown-end text-black">
+                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                            <img
+                                alt="Tailwind CSS Navbar component"
+                                src={user.photoURL} />
+                            </div>
+                        </div>
+                        <ul
+                            tabIndex={0}
+                            className="menu menu-sm dropdown-content bg-base-100 space-y-2 rounded-box z-1 mt-3 w-52 p-2 px-5 shadow">
+                            <li> Name: {user.displayName} </li>
+                            <li> Email: {user.email} </li>
+                            <button className='btn btn-xs' onClick={handleLogOut}><a>Logout</a></button>
+                        </ul>
+                    </div>
+                        </> :
+                        <></>
+                    }
                 </div>
             </div>
         </div>
