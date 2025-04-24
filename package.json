@@ -12,7 +12,8 @@
   "dependencies": {
     "@smastrom/react-rating": "^1.5.0",
     "@tailwindcss/vite": "^4.1.4",
-    "react": "^19.0.0",
+    "firebase": "^11.6.0",
+    "react": "^19.1.0",
     "react-dom": "^19.0.0",
     "react-helmet": "^6.1.0",
     "react-helmet-async": "^2.0.5",

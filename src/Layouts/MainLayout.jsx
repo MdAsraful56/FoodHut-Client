@@ -6,16 +6,18 @@ import Navbar from '../Components/Navbar';
 
 const MainLayout = () => {
 
-    const location = useLocation();
-    console.log(location);
+    // const location = useLocation();
+    // console.log(location);
 
-    const onHeaderFooter = location.pathname.includes('/Login');
+    // const onHeaderFooter = location.pathname.includes('/Login');
 
     return (
         <div>
-            {onHeaderFooter || <Navbar />}
+            {/* {onHeaderFooter || <Navbar />} */}
+            <Navbar />
             <Outlet></Outlet>
-            {onHeaderFooter || <Footer />}
+            <Footer />
+            {/* {onHeaderFooter || <Footer />} */}
         </div>
     );
 };
