@@ -35,13 +35,13 @@ const Menu = () => {
                 <SectionTitle subHeading={"Don't Miss"} heading={"today's offer"} />
                 <MenuCategory items={offered} />
                 <Cover title={'SWEET desserts AT FOODHUT'} details={'Indulge your sweet tooth with our handcrafted desserts, made fresh daily at FoodHut. From rich chocolate cakes to creamy cheesecakes and delicate pastries, every bite is a celebration of flavor. Come treat yourself to something truly special—you deserve it!'} image={menuImg01} />
-                <MenuCategory items={dessert} />
+                <MenuCategory items={dessert} routePath={'dessert'} />
                 <Cover title={'SAVORY PIZZA AT FOODHUT'} details={'Savor the taste of our handcrafted pizzas, made with the freshest ingredients and baked to perfection. From classic margherita to gourmet toppings, each slice is a delicious experience. Join us at FoodHut for a pizza that will leave you craving more!'} image={menuImg02} />
-                <MenuCategory items={pizza} />
+                <MenuCategory items={pizza} routePath={'pizza'} />
                 <Cover title={'FRESH SALADS AT FOODHUT'} details={'Experience the vibrant flavors of our fresh salads, made with seasonal ingredients and bursting with color. From classic Caesar to creative combinations, each bite is a refreshing delight. Join us at FoodHut for a salad that nourishes your body and soul!'} image={menuImg03} />
-                <MenuCategory items={salad} />
+                <MenuCategory items={salad} routePath={'salad'} />
                 <Cover title={'SOUPS AT FOODHUT'} details={'Warm up with our comforting soups, made from scratch with wholesome ingredients. From hearty classics to seasonal specials, each bowl is a hug in a mug. Join us at FoodHut for a soup that warms your heart and soul!'} image={menuImg04} />
-                <MenuCategory items={soup} />
+                <MenuCategory items={soup} routePath={'soup'} />
             </section>
         </div>
     );
