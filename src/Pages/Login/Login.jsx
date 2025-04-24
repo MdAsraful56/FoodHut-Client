@@ -1,5 +1,5 @@
 // import Lottie from 'lottie-react';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
@@ -8,14 +8,15 @@ import { Helmet } from 'react-helmet-async';
 import loginImg from '../../assets/others/authentication2.png';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Login = () => {
 
-    const captchRef = useRef(null);
+    // const captchRef = useRef(null);
     const [disabled, setDisabled] = useState(true);
     const [showPassword, setShowPassword] = useState(false);
 
-    const { signIn } = useContext(AuthContext);
+    const { signInUser } = useContext(AuthContext);
 
     useEffect( () => {
         loadCaptchaEnginge(6); // 6 characters captcha
@@ -31,22 +32,29 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         // console.log(email, password);
-        signIn(email, password)
+        signInUser(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                Swal.fire({
+                    title: "Login Successful",
+                    icon: "success",
+                    draggable: true
+                });
+                form.reset();
             })
 
     }
 
     const handleCaptcha = (e) => {
         e.preventDefault();
-        const user_captcha_value = captchRef.current.value;
+        const user_captcha_value = e.target.value;
         console.log(user_captcha_value);
 
         if (validateCaptcha(user_captcha_value) === true) {
             console.log('Captcha Matched');
             setDisabled(false);
+            e.target.reset();
         } else {
             console.log('Captcha Not Matched');
             setDisabled(true);
@@ -82,9 +90,9 @@ const Login = () => {
                                 <legend className="fieldset-legend">
                                     <LoadCanvasTemplate />
                                 </legend>
-                                <input ref={captchRef} type="text" className="input" placeholder="Type The Captcha" />
+                                <input onBlur={handleCaptcha} type="text" className="input" placeholder="Type The Captcha" />
                                 <div className="mt-1 mb-4">
-                                    <button onClick={handleCaptcha} className="btn w-full btn-neutral btn-xs btn-outline">Valided</button>
+                                    {/* <button onClick={handleCaptcha} className="btn w-full btn-neutral btn-xs btn-outline">Valided</button> */}
                                 </div>
                             </fieldset>
                             <input disabled={disabled} type="submit" value="Submit & Login" className='btn btn-accent font-semibold text-sm rounded-lg hover:bg-transparent hover:border-2 hover:border-[#a5357c]'/>

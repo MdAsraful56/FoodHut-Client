@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link } from 'react-router';
+import { AuthContext } from '../../Providers/AuthProvider';
+import loginImg from '../../assets/others/authentication2.png';
+import Swal from 'sweetalert2';
 
 const Registration = () => {
 
     const [showPassword, setShowPassword] = useState(false)
 
+    const { createUser } = useContext(AuthContext)
 
     const handleRegistration = (e) => {
         e.preventDefault()
@@ -17,7 +21,20 @@ const Registration = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(name, photo, email, password);
-        form.reset();
+
+        createUser(email, password) 
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                Swal.fire({
+                    title: "Registration Successful",
+                    icon: "success",
+                    draggable: true
+                });
+                form.reset();
+                
+            })
+
     }
 
 
@@ -60,7 +77,7 @@ const Registration = () => {
                     <h4 className="text-base">Already have an account? <Link to='/login' >Sign in</Link></h4>
                 </div>
                 <div className="">
-                    {/* <Lottie animationData={registerLOttieData} /> */}
+                    <img src={loginImg} alt="Login" className='w-full' />
                 </div>
             </div>
         </div>
