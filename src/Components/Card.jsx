@@ -1,9 +1,39 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Btn from './Btn';
+import { AuthContext } from '../Providers/AuthProvider';
+import Swal from 'sweetalert2';
+import { useLocation, useNavigate } from 'react-router';
 
 const Card = ({ item }) => {
 
+    const navigate = useNavigate();
+    const location = useLocation();
     const { image, name, recipe, price } = item;
+    const { user } = useContext(AuthContext);
+    
+    // console.log(user?.email);
+
+    const handleAddToCard = (food) => {
+        // console.log(food);
+        if (user && user?.email) {
+            // let 
+        } else {
+            Swal.fire({
+                title: "You Are Not Logged In",
+                text: "Please Login to Order Food",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, Login!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login', {state: {from: location}});
+                }
+            });
+        }
+    }
+
 
     return (
         <div>
@@ -19,7 +49,8 @@ const Card = ({ item }) => {
                     <h2 className="text-lg font-semibold text-center">{name}</h2>
                     <p>{recipe}</p>
                     <div className="card-actions justify-center ">
-                        <Btn BtnName={'Add to Cart'} />
+                        <button onClick={() => {handleAddToCard(item)}} className="btn btn-neutral btn-outline text-center border-b-4 border-[#BB8506] border-[0.5px] hover:border-b-0">Add to Cart</button>
+                        {/* <Btn  BtnName={'Add to Cart'} /> */}
                     </div>
                 </div>
             </div>

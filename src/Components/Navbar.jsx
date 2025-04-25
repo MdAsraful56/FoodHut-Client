@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { HiOutlineShoppingCart } from "react-icons/hi";
 
 const Navbar = () => {
 
@@ -26,16 +27,16 @@ const Navbar = () => {
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/menu'>Our Menu</Link></li>
                         <li><Link to='/order'>Order Food</Link></li>
-                        {
+                        {/* {
                             user ? <>
-                                {/* <li><Link to='/dashboard'>Dashboard</Link></li> */}
-                                {/* <li><Link onClick={handleLogOut} >Logout</Link></li> */}
+                                <li><Link to='/dashboard'>Dashboard</Link></li>
+                                <li><Link onClick={handleLogOut} >Logout</Link></li>
                             </> : 
                             <>
                                 <li><Link to='/Login'>Login</Link></li>
                                 <li><Link to='/registration'>Registration</Link></li>
                             </>
-                        }
+                        } */}
     </>
 
 
@@ -63,6 +64,14 @@ const Navbar = () => {
                 <div className="navbar-end">
                     {
                         user ? <>
+
+                    <Link to='/'>
+                        <button className="btn p-2 mr-3">
+                            <HiOutlineShoppingCart  size={25}/>
+                            <span className="badge badge-sm indicator-item">+0</span>
+                        </button>
+                    </Link>
+
                     <div className="dropdown dropdown-end text-black">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
@@ -73,14 +82,18 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 space-y-2 rounded-box z-1 mt-3 w-52 p-2 px-5 shadow">
-                            <li> Name: {user.displayName} </li>
-                            <li> Email: {user.email} </li>
+                            className="menu menu-sm dropdown-content bg-base-100 space-y-2 rounded-box z-1 mt-3 w-60 p-2 px-3 shadow">
+                            <li className='text-xs'> Name: {user.displayName} </li>
+                            <li className='text-xs' > Email: {user.email} </li>
                             <button className='btn btn-xs' onClick={handleLogOut}><a>Logout</a></button>
                         </ul>
                     </div>
                         </> :
-                        <></>
+                        <>
+                            <ul className="menu menu-horizontal px-1">
+                                <li><Link to='/Login'>Login</Link></li>
+                            </ul>
+                        </>
                     }
                 </div>
             </div>
