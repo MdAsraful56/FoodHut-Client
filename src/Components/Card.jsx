@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router';
 // import axios from 'axios';
 import useAxiosSecure from './../Hooks/useAxiosSecure';
+import useCart from '../Hooks/useCart';
 
 const Card = ({ item }) => {
 
@@ -13,11 +14,12 @@ const Card = ({ item }) => {
     const { image, name, recipe, price, _id } = item;
     const { user } = useContext(AuthContext);
     const axiosSecure =useAxiosSecure();
+    const [, refetch] = useCart();
     
     // console.log(user?.email);
 
-    const handleAddToCard = (food) => {
-        console.log(food);
+    const handleAddToCard = () => {
+        
         if (user && user?.email) {
             const cartItem = {
                 foodId: _id,
@@ -37,6 +39,7 @@ const Card = ({ item }) => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    refetch();
                 })
         } else {
             Swal.fire({
@@ -70,7 +73,7 @@ const Card = ({ item }) => {
                     <h2 className="text-lg font-semibold text-center">{name}</h2>
                     <p>{recipe}</p>
                     <div className="card-actions justify-center ">
-                        <button onClick={() => {handleAddToCard(item)}} className="btn btn-neutral btn-outline text-center border-b-4 border-[#BB8506] border-[0.5px] hover:border-b-0">Add to Cart</button>
+                        <button onClick={() => {handleAddToCard()}} className="btn btn-neutral btn-outline text-center border-b-4 border-[#BB8506] border-[0.5px] hover:border-b-0">Add to Cart</button>
                         {/* <Btn  BtnName={'Add to Cart'} /> */}
                     </div>
                 </div>
