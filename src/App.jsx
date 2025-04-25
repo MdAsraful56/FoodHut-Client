@@ -8,6 +8,11 @@ import Order from './Pages/Orders/Order';
 import Login from './Pages/Login/Login';
 import Registration from './Pages/Registration/Registration';
 import AuthProvider from './Providers/AuthProvider';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
 
 function App() {
 
@@ -25,15 +30,17 @@ function App() {
     )
   )
 
-
+  const queryClient = new QueryClient()
 
   return (
     <AuthProvider>
-      <HelmetProvider>
-        <div className='max-w-screen-xl mx-auto'>
-          <RouterProvider router={router} />
-        </div>
-      </HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <HelmetProvider>
+          <div className='max-w-screen-xl mx-auto'>
+            <RouterProvider router={router} />
+          </div>
+        </HelmetProvider>
+      </QueryClientProvider>
     </AuthProvider>
   )
 }

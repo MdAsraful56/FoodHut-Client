@@ -3,10 +3,12 @@ import { Link } from 'react-router';
 import { AuthContext } from '../Providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { HiOutlineShoppingCart } from "react-icons/hi";
+import useCart from '../Hooks/useCart';
 
 const Navbar = () => {
 
     const { user,logOut } = useContext(AuthContext);
+    const [cart] = useCart();
 
     const handleLogOut = () => {
         logOut()
@@ -68,7 +70,7 @@ const Navbar = () => {
                     <Link to='/'>
                         <button className="btn p-2 mr-3">
                             <HiOutlineShoppingCart  size={25}/>
-                            <span className="badge badge-sm indicator-item">+0</span>
+                            <span className="badge badge-sm indicator-item badge-secondary">+{cart.length}</span>
                         </button>
                     </Link>
 
