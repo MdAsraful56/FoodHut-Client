@@ -5,8 +5,11 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import loginImg from '../../assets/others/authentication2.png';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
 const Registration = () => {
+
+    const axiosPublic = useAxiosPublic();
 
     const [showPassword, setShowPassword] = useState(false)
     const { createUser, updateUserProfile, logOut } = useContext(AuthContext);
@@ -30,19 +33,28 @@ const Registration = () => {
                 updateUserProfile(name, photo)
                     .then(() => {
                         console.log('User profile updated successfully');
-                        Swal.fire({
-                            title: "Registration Successful",
-                            icon: "success",
-                            draggable: true
-                        });
-                        form.reset();
-                        navigate('/login', {replace: true});
-                        logOut()
-                            .then(() => {
-                                console.log('Logout Successful');
-                            })
-                            .catch(error => {
-                                console.log(error.message);
+                        const userInfo = {
+                            name: name,
+                            email: email
+                        }
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    Swal.fire({
+                                        title: "Registration Successful",
+                                        icon: "success",
+                                        draggable: true
+                                    });
+                                    form.reset();
+                                    navigate('/login', {replace: true});
+                                    logOut()
+                                        .then(() => {
+                                            console.log('Logout Successful');
+                                        })
+                                        .catch(error => {
+                                            console.log(error.message);
+                                        })
+                                }
                             })
                     })
                     .catch(error => {

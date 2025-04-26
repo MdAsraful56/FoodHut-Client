@@ -16,6 +16,7 @@ import Dashboard from './Layouts/Dashboard';
 import Cart from './Pages/Dashboard/Cart';
 import Contact from './Pages/Contact/Contact';
 import PrivateRoute from './Routes/PrivateRoute';
+import AllUser from './Pages/Dashboard/AllUser';
 
 
 function App() {
@@ -36,7 +37,9 @@ function App() {
         </Route>
         {/* dashboard layout section  */}
         <Route path='/dashboard' element={ <Dashboard/> } >
-          <Route path='cart' element={ <Cart/> } />
+          <Route path='cart' element={ <Cart/> }> </Route>
+          {/* admin routes  */}
+          <Route path='allUser' element={ <AllUser/> }> </Route>
         </Route>
       </Route>
     )
