@@ -12,6 +12,8 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import Dashboard from './Layouts/Dashboard';
+import Cart from './Pages/Dashboard/Cart';
 
 
 function App() {
@@ -19,13 +21,20 @@ function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path='/' element={ <MainLayout/> } >
-        <Route index element={ <Home/> } />
-        <Route path='/menu' element={ <Menu/> } />
-        <Route path='/order' element={ <Order/> } />
-        <Route path='/order/:category' element={ <Order/> } />
-        <Route path='/login' element={ <Login/> } />
-        <Route path='/registration' element={ <Registration/> } />
+      <Route>
+        {/* main layout section  */}
+        <Route path='/' element={ <MainLayout/> } >
+          <Route index element={ <Home/> } />
+          <Route path='/menu' element={ <Menu/> } />
+          <Route path='/order' element={ <Order/> } />
+          <Route path='/order/:category' element={ <Order/> } />
+          <Route path='/login' element={ <Login/> } />
+          <Route path='/registration' element={ <Registration/> } />
+        </Route>
+        {/* dashboard layout section  */}
+        <Route path='/dashboard' element={ <Dashboard/> } >
+          <Route path='cart' element={ <Cart/> } />
+        </Route>
       </Route>
     )
   )

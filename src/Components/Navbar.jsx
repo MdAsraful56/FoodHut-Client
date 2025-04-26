@@ -67,7 +67,7 @@ const Navbar = () => {
                     {
                         user ? <>
 
-                    <Link to='/'>
+                    <Link to='/dashboard/cart'>
                         <button className="btn p-2 mr-3">
                             <HiOutlineShoppingCart  size={25}/>
                             <span className="badge badge-sm indicator-item badge-secondary">+{cart.length}</span>

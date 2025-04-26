@@ -70,6 +70,9 @@ const Login = () => {
 
     return (
         <div className="p-20 py-28">
+            <Helmet>
+                <title>FoodHut || Login</title>
+            </Helmet>
             <section className="">
                 <div className='flex flex-col-reverse md:flex-row-reverse gap-10 items-center justify-center'>
                     <div className="w-full md:w-3/5 flex flex-col gap-4 justify-center text-left">

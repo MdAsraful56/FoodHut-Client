@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../../Providers/AuthProvider';
 import loginImg from '../../assets/others/authentication2.png';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const Registration = () => {
 
@@ -56,6 +57,9 @@ const Registration = () => {
 
     return (
         <div className="p-20 py-28">
+            <Helmet>
+                <title>FoodHut || Registration</title>
+            </Helmet>
             <div className='flex flex-col-reverse md:flex-row gap-4 items-center justify-center'>
                 <div className="w-full md:w-2/5 flex flex-col gap-4 items-center justify-center">
                     {/* <h1 className="text-4xl font-semibold">Welcome to Job Portal</h1> */}
