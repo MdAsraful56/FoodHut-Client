@@ -29,6 +29,7 @@ const Navbar = () => {
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/menu'>Our Menu</Link></li>
                         <li><Link to='/order'>Order Food</Link></li>
+                        <li><Link to='/contact'>Contact Us</Link></li>
                         {/* {
                             user ? <>
                                 <li><Link to='/dashboard'>Dashboard</Link></li>

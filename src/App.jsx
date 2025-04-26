@@ -14,6 +14,8 @@ import {
 } from '@tanstack/react-query'
 import Dashboard from './Layouts/Dashboard';
 import Cart from './Pages/Dashboard/Cart';
+import Contact from './Pages/Contact/Contact';
+import PrivateRoute from './Routes/PrivateRoute';
 
 
 function App() {
@@ -28,6 +30,7 @@ function App() {
           <Route path='/menu' element={ <Menu/> } />
           <Route path='/order' element={ <Order/> } />
           <Route path='/order/:category' element={ <Order/> } />
+          <Route path='/contact' element={ <PrivateRoute><Contact/></PrivateRoute>} />
           <Route path='/login' element={ <Login/> } />
           <Route path='/registration' element={ <Registration/> } />
         </Route>
