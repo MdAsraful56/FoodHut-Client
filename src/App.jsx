@@ -17,6 +17,7 @@ import Cart from './Pages/Dashboard/Cart';
 import Contact from './Pages/Contact/Contact';
 import PrivateRoute from './Routes/PrivateRoute';
 import AllUser from './Pages/Dashboard/AllUser';
+import AddItems from './Pages/Dashboard/AddItems';
 
 
 function App() {
@@ -39,7 +40,8 @@ function App() {
         <Route path='/dashboard' element={ <Dashboard/> } >
           <Route path='cart' element={ <Cart/> }> </Route>
           {/* admin routes  */}
-          <Route path='allUser' element={ <AllUser/> }> </Route>
+          <Route path='allUser' element={ <AllUser/> } />
+          <Route path='addItems' element={ <AddItems/> } />
         </Route>
       </Route>
     )

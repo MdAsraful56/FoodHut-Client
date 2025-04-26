@@ -20,7 +20,7 @@ const AllUser = () => {
         <div>
             <SectionTitle subHeading={'How Many ?'} heading={'Mnage All Users'} />
             <div className="bg-white m-10 p-5 border rounded-lg">
-                <h2 className="text-3xl">All Users {users.length}</h2>
+                <h2 className="text-3xl">All Users: {users.length}</h2>
                 <div className="mt-7">
                     <div className="overflow-x-auto">
                         <table className="table">
@@ -40,7 +40,7 @@ const AllUser = () => {
                                             <th>{index + 1}</th>
                                             <td>{item.name}</td>
                                             <td>{item.email}</td>
-                                            <td><button className="btn"> <FaUsers /> </button></td>
+                                            <td><button  className="btn"> <FaUsers /> </button></td>
                                             <td className=''><button onClick={ () => {handleDeleted(item._id)} } className="btn bg-none"><MdDelete size={25} color='red' /></button></td>
                                         </tr>
                                     )
