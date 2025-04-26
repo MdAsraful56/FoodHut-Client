@@ -9,7 +9,7 @@ const Dashboard = () => {
     return (
         <div className='flex comic-relief-regular'>
             <div className="w-64 min-h-screen bg-[#D1A054] space-y-2">
-                <h2 className="text-2xl text-center pt-5">FoodHut</h2>
+                <h2 className="text-3xl text-center pt-5">FoodHut</h2>
                 <ul className="menu p-4 uppercase text-base-content space-y-1">
                     <li><NavLink to='/dashboard/userHome'> <FaHome /> User Home</NavLink></li>
                     <li><NavLink to='/dashboard/reservation'> <FaCalendar /> Reservation</NavLink></li>
