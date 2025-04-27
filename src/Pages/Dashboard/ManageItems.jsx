@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import useMenu from '../../Hooks/useMenu';
 import SectionTitle from '../../Components/SectionTitle';
 import { MdDelete } from 'react-icons/md';
+import Swal from 'sweetalert2';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
+// import { useQuery } from '@tanstack/react-query';
 
 const ManageItems = () => {
-    const [menu] = useMenu();
+    const axiosSecure = useAxiosSecure();
+    const [menu, refetch] = useMenu();
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
     const totalPages = Math.ceil(menu.length / itemsPerPage);
@@ -17,9 +21,35 @@ const ManageItems = () => {
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = menu.slice(indexOfFirstItem, indexOfLastItem);
 
+
+    // const {refetch} = useQuery({});
+
     // Dummy delete handler
     const handleDeleted = (id) => {
         console.log("Delete item with id:", id);
+            Swal.fire({
+            title: "Are you sure?",
+            text: "Deleted This Menu Items",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/menu/${id}`)
+                    .then(res => {
+                    if (res.data.deletedCount > 0) {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your Menu has been deleted.",
+                            icon: "success"
+                        });
+                    }
+                    refetch();
+                })
+            }
+                });
         // You can add your delete logic here
     };
 

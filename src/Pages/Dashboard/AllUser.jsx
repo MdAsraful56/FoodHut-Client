@@ -1,20 +1,77 @@
-import React from 'react';
+import React  from 'react';
 import SectionTitle from '../../Components/SectionTitle';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { MdDelete } from 'react-icons/md';
 import { FaUsers } from 'react-icons/fa';
+import Swal from 'sweetalert2';
+
 
 const AllUser = () => {
 
     const axiosSecure = useAxiosSecure();
-    const { data: users =[]} = useQuery({
+    const { data: users =[], refetch} = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await axiosSecure.get('/users');
             return res.data;
         }
     })
+
+    const handleDeleted = (id) => {
+        console.log(`Item with id ${id} deleted`);
+        Swal.fire({
+        title: "Are you sure?",
+        text: "Deleted This User",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+        if (result.isConfirmed) {
+            axiosSecure.delete(`/users/${id}`)
+                .then(res => {
+                if (res.data.deletedCount > 0) {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your User has been deleted.",
+                        icon: "success"
+                    });
+                }
+                refetch();
+            })
+        }
+        });
+    }
+
+    const handleUserRole = (id) => {
+        console.log(`Item with id ${id} deleted`);
+        Swal.fire({
+        title: "Are you sure?",
+        text: "Make this user an Admin",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes !"
+        }).then((result) => {
+        if (result.isConfirmed) {
+            axiosSecure.patch(`/users/admin/${id}`)
+                .then(res => {
+                if (res.data.modifiedCount) {
+                    Swal.fire({
+                        title: "Updated!",
+                        text: "This user is now an Admin.",
+                        icon: "success"
+                    });
+                }
+                refetch();
+            })
+        }
+        });
+    }
+
 
     return (
         <div>
@@ -40,7 +97,7 @@ const AllUser = () => {
                                             <th>{index + 1}</th>
                                             <td>{item.name}</td>
                                             <td>{item.email}</td>
-                                            <td><button  className="btn"> <FaUsers /> </button></td>
+                                            <td>{item?.role === 'admin' ? "Admin" : <button onClick={ () => {handleUserRole(item._id)}}  className="btn"> <FaUsers /> </button>}</td>
                                             <td className=''><button onClick={ () => {handleDeleted(item._id)} } className="btn bg-none"><MdDelete size={25} color='red' /></button></td>
                                         </tr>
                                     )
