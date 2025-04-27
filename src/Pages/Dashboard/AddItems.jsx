@@ -1,23 +1,41 @@
 import React from 'react';
 import SectionTitle from '../../Components/SectionTitle';
 import { FaUtensils } from 'react-icons/fa';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 // import { AuthContext } from '../../Providers/AuthProvider';
 
 const AddItems = () => {
+
+    const axiosSecure = useAxiosSecure();
 
     const handleAddItems = (e) => {
         e.preventDefault();
         const form = e.target;
         const name = form[0].value;
         const image = form[1].value;
-        const category = form[2].value;
+        const category = form[2].value.toLowerCase();
         const price = form[3].value;
-        const details = form[4].value;
+        const recipe = form[4].value;
 
-        const newItem = { name, image, category, price, details };
+        const newItem = { name, image, category, price, recipe };
         console.log(newItem);
 
         // Add your API call here to add the item to the database
+
+        axiosSecure.post('/menus', newItem) 
+            .then(res => {
+                if (res.data.insertedId) {
+                    // alert('Item added successfully!');
+                    Swal.fire({
+                        title: "Add Items Successfull!",
+                        icon: "success",
+                        draggable: true
+                    });
+                } else {
+                    // alert('Failed to add item. Please try again.');
+                }
+            })
         // fetch('your-api-endpoint', {
         //     method: 'POST',
         //     headers: {
@@ -53,12 +71,13 @@ const AddItems = () => {
                                     <option>Salad</option>
                                     <option>Pizza</option>
                                     <option>Soup</option>
-                                    <option>Desert</option>
+                                    <option>Dessert</option>
+                                    <option>Drinks</option>
                                 </select>
                             </div>
                             <div className="flex flex-col gap-3 w-1/2">
                                 <span className="">Recipe Price*</span>
-                                <input type="number" placeholder="Recipe Price" required className="input input-bordered w-full" />
+                                <input type="number" step='0.01' placeholder="Recipe Price" required className="input input-bordered w-full" />
                             </div>
                         </div>
                         <span className="">Recipe Details*</span>

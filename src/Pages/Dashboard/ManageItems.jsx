@@ -9,9 +9,9 @@ const ManageItems = () => {
     const itemsPerPage = 10;
     const totalPages = Math.ceil(menu.length / itemsPerPage);
 
-    const totalPrice = menu.reduce((total, item) => total + item.price, 0);
-    const totalPriceRound = totalPrice.toFixed(3);
-
+    const totalPrice = menu.reduce((total, item) => total + (parseFloat(item.price) || 0), 0);
+    const totalPriceRound = parseFloat(totalPrice.toFixed(2));
+    
     // New: Slice the menu to show only current page items
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
