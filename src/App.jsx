@@ -18,6 +18,8 @@ import Contact from './Pages/Contact/Contact';
 import PrivateRoute from './Routes/PrivateRoute';
 import AllUser from './Pages/Dashboard/AllUser';
 import AddItems from './Pages/Dashboard/AddItems';
+// import MnageItems from './Pages/Dashboard/MnageItems';
+import ManageItems from './Pages/Dashboard/ManageItems';
 
 
 function App() {
@@ -42,6 +44,7 @@ function App() {
           {/* admin routes  */}
           <Route path='allUser' element={ <AllUser/> } />
           <Route path='addItems' element={ <AddItems/> } />
+          <Route path='manageItems' element={ <ManageItems/> } />
         </Route>
       </Route>
     )
