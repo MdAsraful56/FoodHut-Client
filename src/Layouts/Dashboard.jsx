@@ -5,11 +5,12 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { NavLink, Outlet } from 'react-router';
 import { FaShop } from 'react-icons/fa6';
 import useCart from '../Hooks/useCart';
+import useAdmin from '../Hooks/useAdmin';
 
 const Dashboard = () => {
 
     const [cart] = useCart();
-    const isAdmin = true;
+    const [ isAdmin ] = useAdmin();
 
     return (
         <div className='flex comic-relief-regular'>
