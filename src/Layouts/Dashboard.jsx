@@ -9,7 +9,7 @@ import useCart from '../Hooks/useCart';
 const Dashboard = () => {
 
     const [cart] = useCart();
-    const isAdmin = false;
+    const isAdmin = true;
 
     return (
         <div className='flex comic-relief-regular'>
