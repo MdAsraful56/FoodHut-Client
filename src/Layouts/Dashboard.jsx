@@ -15,6 +15,8 @@ const Dashboard = () => {
     const { user } = useContext(AuthContext);
 
     const isAdmin = user?.role === 'admin';
+    // const isAdmin = true;
+    // console.log(isAdmin);
 
     return (
         <div className='flex comic-relief-regular'>

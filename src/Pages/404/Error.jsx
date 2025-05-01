@@ -9,10 +9,10 @@ const Error = () => {
     const navigate = useNavigate();
 
     return (
-        <div className='flex flex-col items-center justify-center comic-relief-regular mt-20'>
-            <h1 className="text-4xl">Opps!! Something is missing......</h1>
+        <div className='flex flex-col items-center justify-center comic-relief-regular my-20'>
+            <h1 className="md:text-4xl text-2xl">Opps!! Something is missing......</h1>
             <img src={img404} alt="" className="h-[500px]" />
-            <button onClick={() => {navigate('/')}} className="btn text-2xl"><FaArrowLeft size={20} /> Back Home</button>
+            <button onClick={() => {navigate('/')}} className="btn md:text-2xl text-xl"><FaArrowLeft size={20} /> Back Home</button>
         </div>
     );
 };
