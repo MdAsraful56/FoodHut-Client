@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaAd, FaBook, FaCalendar, FaHome, FaList, FaShoppingCart, FaUser, FaUsers, FaUtensils } from 'react-icons/fa';
 import { MdMail, MdPayment } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { NavLink, Outlet } from 'react-router';
 import { FaShop } from 'react-icons/fa6';
 import useCart from '../Hooks/useCart';
-import useAdmin from '../Hooks/useAdmin';
+// import useAdmin from '../Hooks/useAdmin';
+import { AuthContext } from '../Providers/AuthProvider';
 
 const Dashboard = () => {
 
     const [cart] = useCart();
-    const [ isAdmin ] = useAdmin();
+    // const [ isAdmin ] = useAdmin();
+    const { user } = useContext(AuthContext);
+
+    const isAdmin = user?.role === 'admin';
 
     return (
         <div className='flex comic-relief-regular'>

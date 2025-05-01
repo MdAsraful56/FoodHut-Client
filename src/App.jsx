@@ -20,6 +20,7 @@ import AllUser from './Pages/Dashboard/AllUser';
 import AddItems from './Pages/Dashboard/AddItems';
 // import MnageItems from './Pages/Dashboard/MnageItems';
 import ManageItems from './Pages/Dashboard/ManageItems';
+import Error from './Pages/404/Error';
 
 
 function App() {
@@ -27,9 +28,9 @@ function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route>
+      <Route errorElement={ <Error/> } >
         {/* main layout section  */}
-        <Route path='/' element={ <MainLayout/> } >
+        <Route path='/' element={ <MainLayout/> } errorElement={ <Error/> } >
           <Route index element={ <Home/> } />
           <Route path='/menu' element={ <Menu/> } />
           <Route path='/order' element={ <Order/> } />

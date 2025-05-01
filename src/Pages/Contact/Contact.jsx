@@ -7,10 +7,35 @@ import { FaLocationDot, FaPhoneVolume } from 'react-icons/fa6';
 import { IoIosTime } from 'react-icons/io';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { BsFillSendFill } from 'react-icons/bs';
+import Swal from 'sweetalert2';
+// import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
 const Contact = () => {
 
     const { user } = useContext(AuthContext);
+    // const axiosPublic = useAxiosPublic();
+
+
+    const handleSendMessage = e => {
+        // e.preventdefault();
+        e.preventDefault();
+        const form = e.target;
+        const name = form[0].value;
+        const phone = form[1].value;
+        const email = form[2].value;
+        const textarea = form[3].value;
+        console.log(name, phone, email, textarea);
+        // const contactData = {name, phone, email, textarea};
+        // axiosPublic.post('/contactData', contactData)
+        //     .then( res => res.data )
+        Swal.fire({
+            title: "Send Message Successfully!",
+            icon: "success",
+            draggable: true
+        });
+        form.reset();
+    }
+
 
 
     return (
@@ -54,7 +79,7 @@ const Contact = () => {
                 </div>
                 <SectionTitle subHeading={'Send Us a Message'} heading={'contact Form'} />
                 <div className="flex justify-center items-center my-10">
-                    <form className="w-1/2 flex flex-col gap-5">
+                    <form onSubmit={handleSendMessage} className="w-1/2 flex flex-col gap-5">
                         <span className="">Name*</span>
                         <input type="text" placeholder="Your Name" required className="input input-bordered w-full" />
                         <span className="">Phone*</span>
