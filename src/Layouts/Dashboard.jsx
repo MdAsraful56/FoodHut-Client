@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaAd, FaBook, FaCalendar, FaHome, FaList, FaShoppingCart, FaUser, FaUsers, FaUtensils } from 'react-icons/fa';
 import { MdMail, MdPayment } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -7,16 +7,37 @@ import { FaShop } from 'react-icons/fa6';
 import useCart from '../Hooks/useCart';
 // import useAdmin from '../Hooks/useAdmin';
 import { AuthContext } from '../Providers/AuthProvider';
+// import useAdmin from './../Hooks/useAdmin';
 
 const Dashboard = () => {
 
     const [cart] = useCart();
+    const [isAdmin, setIsAdmin] = useState(false);
     // const [ isAdmin ] = useAdmin();
     const { user } = useContext(AuthContext);
 
-    const isAdmin = user?.role === 'admin';
+    // const isAdmin = user?.role === 'admin';
     // const isAdmin = true;
     // console.log(isAdmin);
+    // console.log(user?.role);
+    // console.log(user)
+
+
+    useEffect(() => {
+        const email = user.email;
+    
+        fetch(`http://localhost:5000/users/admin/${email}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.admin) {
+                    setIsAdmin(true); // আপনি চাইলে একটা state এ রাখতে পারেন
+                } else {
+                    setIsAdmin(false);
+                }
+            });
+    }, [user.email]);
+    
+
 
     return (
         <div className='flex comic-relief-regular'>
