@@ -21,6 +21,7 @@ import AddItems from './Pages/Dashboard/AddItems';
 // import MnageItems from './Pages/Dashboard/MnageItems';
 import ManageItems from './Pages/Dashboard/ManageItems';
 import Error from './Pages/404/Error';
+import AdminHome from './Pages/Dashboard/AdminHome';
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         <Route path='/dashboard' element={ <Dashboard/> } >
           <Route path='cart' element={ <Cart/> }> </Route>
           {/* admin routes  */}
+          <Route path='adminHome' element={ <AdminHome/> } />
           <Route path='allUser' element={ <AllUser/> } />
           <Route path='addItems' element={ <AddItems/> } />
           <Route path='manageItems' element={ <ManageItems/> } />
