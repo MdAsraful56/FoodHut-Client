@@ -3,18 +3,20 @@ import useMenu from '../../Hooks/useMenu';
 import SectionTitle from '../../Components/SectionTitle';
 import { MdDelete } from 'react-icons/md';
 import Swal from 'sweetalert2';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
+// import useAxiosSecure from '../../Hooks/useAxiosSecure';
+// import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
 const ManageItems = () => {
-    const axiosSecure = useAxiosSecure();
-    const [menu] = useMenu();
+    // const axiosPublic = useAxiosPublic();
+
+    // const [menu] = useMenu();
+    const [menu, , refetch] = useMenu();  // 👈 third element is refetch
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
     const totalPages = Math.ceil(menu.length / itemsPerPage);
 
     const totalPrice = menu.reduce((total, item) => total + (parseFloat(item.price) || 0), 0);
     const totalPriceRound = parseFloat(totalPrice.toFixed(2));
-    
     // New: Slice the menu to show only current page items
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -22,31 +24,52 @@ const ManageItems = () => {
 
 
     const handleDeleted = (id) => {
-        console.log(`Item with id ${id} deleted`);
+        console.log(`Deleting item with id: ${id}`);
         Swal.fire({
-        title: "Are you sure?",
-        text: "Deleted This User",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
+            title: "Are you sure?",
+            text: "Deleted This Item",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
         }).then((result) => {
-        if (result.isConfirmed) {
-            axiosSecure.delete(`/menus/${id}`)
-                .then(res => {
-                if (res.data.deletedCount > 0) {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/menus/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.deletedCount > 0) {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your Item has been deleted.",
+                            icon: "success"
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Something went wrong, the item wasn't deleted.",
+                            icon: "error"
+                        });
+                    }
+                    refetch(); // Ensure the data is re-fetched after deletion
+                })
+                .catch((error) => {
+                    console.error('Error deleting item:', error);
                     Swal.fire({
-                        title: "Deleted!",
-                        text: "Your User has been deleted.",
-                        icon: "success"
+                        title: "Error!",
+                        text: "An error occurred while deleting the item.",
+                        icon: "error"
                     });
-                }
-                // refetch();
-            })
-        }
+                });
+            }
         });
-    }
+    };
+    
 
     // Pagination buttons 
     const renderPageNumbers = () => {
