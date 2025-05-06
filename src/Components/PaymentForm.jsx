@@ -1,8 +1,9 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React from 'react';
+import React, { useState } from 'react';
 
 const PaymentForm = () => {
 
+    const [error, setError] = useState();
     const stripe = useStripe();
     const elements = useElements();
 
@@ -26,9 +27,11 @@ const PaymentForm = () => {
 
         if (error) {
             console.error('[Payment error]', error);
+            setError(error.message);
         } else {
             console.log('[PaymentMethod]', paymentMethod);
             // Here you can send the paymentMethod.id to your server to process the payment
+            setError(null);
         }
 
 
@@ -55,6 +58,7 @@ const PaymentForm = () => {
                     }}
                 />
                 <button className='btn btn-sm btn-primary my-5 ' type="submit" disabled={!stripe}>Pay</button>
+                {error && <p className='text-red-500'>{error}</p>}
             </form>
         </div>
     );
