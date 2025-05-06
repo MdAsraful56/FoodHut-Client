@@ -11,7 +11,10 @@ const Cart = () => {
 
     const [cart, refetch] = useCart();
     const axiosSecure = useAxiosSecure();
-    const totalPrice = cart.reduce( (total, item) => total + item.price ,0)
+    const totalPrice = cart.reduce((total, item) => {
+        const price = parseFloat(item.price); // or Number(item.price)
+        return total + (isNaN(price) ? 0 : price);
+    }, 0);
 
     const handleDeleted = (id) => {
         console.log(`Item with id ${id} deleted`);
