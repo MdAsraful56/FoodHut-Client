@@ -16,7 +16,7 @@ const PaymentForm = () => {
     const { user } = useContext(AuthContext);
     // const axiosSecure = useAxiosSecure();
     const axiosPublic = useAxiosPublic();
-    const [cart] = useCart();
+    const [cart, refetch] = useCart();
     const totalPrice = cart.reduce((total, item) => {
         const price = parseFloat(item.price); // or Number(item.price)
         return total + (isNaN(price) ? 0 : price);
@@ -85,6 +85,7 @@ const PaymentForm = () => {
                     icon: "success",
                     draggable: true
                 });
+                refetch();
                 // Save payment information to the server
                 const payment = {
                     email: user?.email,
@@ -93,7 +94,7 @@ const PaymentForm = () => {
                     date: new Date(),
                     cartItems: cart.map(item => item._id),
                     status: 'service pending',
-                    foodItemId: cart.map(item => item.foodId)
+                    foodItemIds: cart.map(item => item.foodId)
                 }
                 console.log('Payment data:', payment);
                 axiosPublic.post('/payments', payment)
@@ -109,6 +110,10 @@ console.log("Client secret:", clientSecret); // should look like "pi_..._secret_
 
     return (
         <div>
+            <div className="text-center my-5">
+                <h2 className="text-3xl font-semibold">Total Amount: ${totalPrice}</h2>
+                <p className="text-sm text-gray-500">Please pay for your order</p>
+            </div>
             <form onSubmit={handleSubmit}>
                 <CardElement
                     options={{
@@ -126,7 +131,7 @@ console.log("Client secret:", clientSecret); // should look like "pi_..._secret_
                     },
                     }}
                 />
-                <button className='btn btn-sm btn-primary my-5 ' type="submit" disabled={ !stripe }>Pay</button>
+                <button className='btn btn-sm btn-primary my-5 ' type="submit" disabled={ !stripe || !totalPrice }>Pay</button>
                 <div className="mt-10 flex flex-col items-center">
                     {error && <p className='text-red-500'>{error}</p>}
                     {transactionId && <p className='text-green-500'>Transaction complete with transactionId: {transactionId}</p>}
