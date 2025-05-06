@@ -5,6 +5,7 @@ import SectionTitle from '../../Components/SectionTitle';
 import { MdDelete } from 'react-icons/md';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import { Link } from 'react-router';
 
 const Cart = () => {
 
@@ -46,7 +47,12 @@ const Cart = () => {
                 <div className="flex justify-between items-center">
                     <h3 className="text-2xl">Total Items: {cart.length}</h3>
                     <h3 className="text-2xl">Total Price: ${totalPrice}</h3>
-                    <button className="btn bg-[#D1A054] text-white ">Pay</button>
+                    {
+                        cart.length ? 
+                        <Link to='/dashboard/payment'><button className="btn bg-[#D1A054] text-white ">Pay</button></Link> 
+                        :
+                        <button disabled className="btn bg-[#D1A054] text-white ">Pay</button>
+                    }
                 </div>
                 <div className="mt-7">
                     <div className="overflow-x-auto">

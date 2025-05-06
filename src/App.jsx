@@ -22,6 +22,7 @@ import AddItems from './Pages/Dashboard/AddItems';
 import ManageItems from './Pages/Dashboard/ManageItems';
 import Error from './Pages/404/Error';
 import AdminHome from './Pages/Dashboard/AdminHome';
+import Payment from './Pages/Dashboard/Payment';
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         {/* dashboard layout section  */}
         <Route path='/dashboard' element={ <Dashboard/> } >
           <Route path='cart' element={ <Cart/> }> </Route>
+          <Route path='payment' element={ <Payment/> }> </Route>
           {/* admin routes  */}
           <Route path='adminHome' element={ <AdminHome/> } />
           <Route path='allUser' element={ <AllUser/> } />
