@@ -25,6 +25,7 @@ import AdminHome from './Pages/Dashboard/AdminHome';
 import Payment from './Pages/Dashboard/Payment';
 import MyBooking from './Pages/Dashboard/MyBooking';
 import Review from './Pages/Dashboard/Review';
+import ManageBookings from './Pages/Dashboard/ManageBookings';
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
           <Route path='allUser' element={ <AllUser/> } />
           <Route path='addItems' element={ <AddItems/> } />
           <Route path='manageItems' element={ <ManageItems/> } />
+          <Route path='manageBookings' element={ <ManageBookings/> } />
         </Route>
       </Route>
     )
