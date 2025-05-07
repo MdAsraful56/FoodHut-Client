@@ -94,7 +94,7 @@ const PaymentForm = () => {
                     date: new Date(),
                     cartItems: cart.map(item => item._id),
                     status: 'service pending',
-                    foodItemIds: cart.map(item => item.foodId)
+                    foodItemId: cart.map(item => item.foodId)
                 }
                 console.log('Payment data:', payment);
                 axiosPublic.post('/payments', payment)
