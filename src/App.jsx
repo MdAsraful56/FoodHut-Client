@@ -24,6 +24,7 @@ import Error from './Pages/404/Error';
 import AdminHome from './Pages/Dashboard/AdminHome';
 import Payment from './Pages/Dashboard/Payment';
 import MyBooking from './Pages/Dashboard/MyBooking';
+import Review from './Pages/Dashboard/Review';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         <Route path='/dashboard' element={ <Dashboard/> } >
           <Route path='cart' element={ <Cart/> }> </Route>
           <Route path='payment' element={ <Payment/> }> </Route>
+          <Route path='review' element={ <Review/> }> </Route>
           <Route path='bookings' element={ <MyBooking/> }> </Route>
           {/* admin routes  */}
           <Route path='adminHome' element={ <AdminHome/> } />
