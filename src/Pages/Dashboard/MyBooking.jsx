@@ -33,7 +33,7 @@ const MyBooking = () => {
                                 <th></th>
                                 <th>Email</th>
                                 <th>Total Price</th>
-                                {/* <th>Total Cart</th> */}
+                                <th>Total Item</th>
                                 <th>Status</th>
                                 <th>Date</th>
                             </tr>
@@ -45,7 +45,7 @@ const MyBooking = () => {
                                     <th>{index + 1}</th>
                                     <td>{payment.email}</td>
                                     <td>${payment.price}</td>
-                                    {/* <td>{payment?.foodItemIds?.length}</td> */}
+                                    <td>{payment?.foodItemId?.length}</td>
                                     <td>{payment.status}</td>
                                     <td>{payment.date}</td>
                                 </tr>)
