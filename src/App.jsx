@@ -26,6 +26,7 @@ import Payment from './Pages/Dashboard/Payment';
 import MyBooking from './Pages/Dashboard/MyBooking';
 import Review from './Pages/Dashboard/Review';
 import ManageBookings from './Pages/Dashboard/ManageBookings';
+import UserHome from './Pages/Dashboard/UserHome';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         </Route>
         {/* dashboard layout section  */}
         <Route path='/dashboard' element={ <Dashboard/> } >
+          <Route path='userHome' element={ <UserHome/> }> </Route>
           <Route path='cart' element={ <Cart/> }> </Route>
           <Route path='payment' element={ <Payment/> }> </Route>
           <Route path='review' element={ <Review/> }> </Route>

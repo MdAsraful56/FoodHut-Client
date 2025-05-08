@@ -66,9 +66,9 @@ const AdminHome = () => {
 
     return (
         <div>
-            <div className="mx-5 mt-10">
-                <span className="text-2xl">Hi, Welcome {user ? user.displayName : 'Back'} </span>
-                <section className="mt-6 ml-10">
+            <div className="mx-5 my-10 ">
+                <span className="text-3xl">Hi, Welcome {user ? user.displayName : 'Back'} </span>
+                <section className="mt-6 lg:ml-10 ml-2">
                     <div className="stats shadow">
                         <div className="stat">
                             <div className="stat-figure text-secondary">
@@ -100,8 +100,8 @@ const AdminHome = () => {
                         </div>
                     </div>
                 </section>
-                <section className="flex justify-around mt-10">
-                    <div className="w-1/2">
+                <section className="flex flex-col lg::flex-row justify-between items-center mt-10">
+                    <div className="md:w-1/2 w-full">
                         <BarChart
                             width={500}
                             height={300}
@@ -123,7 +123,7 @@ const AdminHome = () => {
                             </Bar>
                         </BarChart>
                     </div>
-                    <div className="w-1/2">
+                    <div className="md:w-1/2 w-full">
                         <PieChart width={400} height={400}>
                             <Pie
                                 data={pieChartData}

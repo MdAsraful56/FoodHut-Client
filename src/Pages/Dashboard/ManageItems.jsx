@@ -94,10 +94,10 @@ const ManageItems = () => {
         <div>
             <SectionTitle subHeading={"Hurry Up's"} heading={'Manage All Items'} />
             <div className="">
-                <div className="bg-white m-10 p-5 border rounded-lg"> 
+                <div className="bg-white m-5 lg:p-5 p-2 border rounded-lg"> 
                 <div className="flex justify-between items-center">
-                    <h3 className="text-2xl">Total Items: {menu.length}</h3>
-                    <h3 className="text-2xl">Total Price: ${totalPriceRound}</h3>
+                    <h3 className="md:text-2xl text-xl">Total Items: {menu.length}</h3>
+                    <h3 className="md:text-2xl text-xl">Total Price: ${totalPriceRound}</h3>
                     <button className="btn bg-[#D1A054] text-white">Pay</button>
                 </div>
                 
@@ -118,7 +118,7 @@ const ManageItems = () => {
                             <tr key={item._id}>
                             <th>{indexOfFirstItem + index + 1}</th>
                             <td>
-                                <img src={item.image} alt="" className="size-20 w-24 h-16 rounded-xl" />
+                                <img src={item.image} alt="" className="size-20 md:w-24 w-12 md:h-16 h-10 rounded-xl" />
                             </td>
                             <td>{item.name}</td>
                             <td>${item.price}</td>

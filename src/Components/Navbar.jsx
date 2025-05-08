@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../Providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { HiOutlineShoppingCart } from "react-icons/hi";
@@ -26,10 +26,10 @@ const Navbar = () => {
     }
 
     const navOptions = <>
-                        <li><Link to='/'>Home</Link></li>
-                        <li><Link to='/menu'>Our Menu</Link></li>
-                        <li><Link to='/order'>Order Food</Link></li>
-                        <li><Link to='/contact'>Contact Us</Link></li>
+                        <li className=''><NavLink to='/'>Home</NavLink></li>
+                        <li className=''><NavLink to='/menu'>Our Menu</NavLink></li>
+                        <li className=''><NavLink to='/order'>Order Food</NavLink></li>
+                        <li className=''><NavLink to='/contact'>Contact Us</NavLink></li>
                         {/* {
                             user ? <>
                                 <li><Link to='/dashboard'>Dashboard</Link></li>
@@ -45,15 +45,15 @@ const Navbar = () => {
 
     return (
         <div>
-            <div className="navbar max-w-screen-xl fixed z-100 text-white bg-[#22302a7a] shadow-sm">
+            <div className="navbar max-w-screen-xl fixed z-100 text-white bg-[#ffffff7a] shadow-sm">
                 <div className="navbar-start">
-                    <div className="dropdown">
+                    <div className="dropdown text-black">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        className="menu menuColor menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                             {navOptions}
                     </ul>
                     </div>
@@ -88,13 +88,13 @@ const Navbar = () => {
                             className="menu menu-sm dropdown-content bg-base-100 space-y-2 rounded-box z-1 mt-3 w-60 p-2 px-3 shadow">
                             <li className='text-xs'> Name: {user.displayName} </li>
                             <li className='text-xs' > Email: {user.email} </li>
-                            <button className='btn btn-xs' onClick={handleLogOut}><a>Logout</a></button>
+                            <button className='btn btn-xs btn-accent' onClick={handleLogOut}><a>Logout</a></button>
                         </ul>
                     </div>
                         </> :
                         <>
                             <ul className="menu menu-horizontal px-1">
-                                <li><Link to='/Login'>Login</Link></li>
+                                <li className=''><Link  to='/Login'>Login</Link></li>
                             </ul>
                         </>
                     }

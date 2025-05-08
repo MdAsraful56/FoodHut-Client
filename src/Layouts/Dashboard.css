@@ -1,0 +1,16 @@
+/* navbar & navlink  */
+
+a {
+    text-decoration: none;
+    color: black;
+    padding: 10px 15px;
+    transition: 0.3s ease;
+    border-bottom: 2px solid transparent;
+    /* display: inline-block; */
+}
+
+a.active {
+    color: #007bff; /* Blue */
+    font-weight: bold;
+    border-bottom: 2px solid #007bff;
+}

@@ -56,15 +56,15 @@ const AddItems = () => {
     return (
         <div>
             <SectionTitle subHeading={"what's New"} heading={'Add An Items'} />
-            <div className="bg-[#d19f5421] m-10 p-5 border  rounded-lg">
+            <div className="bg-[#d19f5421] m-10 lg:p-5 border  rounded-lg">
                 <div className="flex justify-center items-center my-10">
                     <form onSubmit={handleAddItems} className="w-1/2 flex flex-col gap-5">
                         <span className="">Recipe name*</span>
                         <input type="text" placeholder="Recipe name" required className="input input-bordered w-full" />
                         <span className="">Recipe Image Url</span>
                         <input type="url" placeholder="Recipe Image Url" required className="input input-bordered w-full" />
-                        <div className="flex flex-row gap-2">
-                            <div className="flex flex-col gap-3 w-1/2">
+                        <div className="flex lg:flex-row md:flex-col sm: flex-col gap-2">
+                            <div className="flex flex-col gap-3 lg:w-1/2 w-full">
                                 <span className="">Category*</span>
                                 <select required className="select select-bordered w-full max-w-xs">
                                     <option disabled selected>Pick one</option>
@@ -75,7 +75,7 @@ const AddItems = () => {
                                     <option>Drinks</option>
                                 </select>
                             </div>
-                            <div className="flex flex-col gap-3 w-1/2">
+                            <div className="flex flex-col gap-3 lg:w-1/2 w-full">
                                 <span className="">Recipe Price*</span>
                                 <input type="number" step='0.01' placeholder="Recipe Price" required className="input input-bordered w-full" />
                             </div>

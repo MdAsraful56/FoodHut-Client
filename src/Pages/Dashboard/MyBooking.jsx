@@ -22,7 +22,7 @@ const MyBooking = () => {
     return (
         <div>
             <SectionTitle heading={'Payment History'} subHeading={'Show My All Booking'} />
-            <div className="mx-20 bg-white shadow-md rounded-lg p-5">
+            <div className="lg:mx-20 mx-2 bg-white shadow-md rounded-lg p-5">
                 <h2 className="text-3xl">Total Payments : {payments.length}</h2>
                 <section className="mt-6">
                     <div className="overflow-x-auto">
