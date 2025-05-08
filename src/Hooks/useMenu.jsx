@@ -6,7 +6,7 @@ const useMenu = () => {
 
     const fetchMenu = useCallback(() => {
         setLoading(true);
-        fetch('http://localhost:5000/menus')
+        fetch('https://food-hut-server-five.vercel.app/menus')
             .then(res => res.json())
             .then(data => {
                 setMenu(data);

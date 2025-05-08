@@ -8,7 +8,7 @@ const CardSection = () => {
 
 
     useEffect( () => {
-        fetch('http://localhost:5000/menus')
+        fetch('https://food-hut-server-five.vercel.app/menus')
             .then(res => res.json())
             .then(data => {
                 setMenuItems(data.slice(0, 3));

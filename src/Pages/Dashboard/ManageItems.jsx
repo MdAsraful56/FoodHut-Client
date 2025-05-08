@@ -35,7 +35,7 @@ const ManageItems = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/menus/${id}`, {
+                fetch(`https://food-hut-server-five.vercel.app/menus/${id}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',

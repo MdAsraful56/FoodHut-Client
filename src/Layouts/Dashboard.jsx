@@ -15,7 +15,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         const email = user.email;
-        fetch(`http://localhost:5000/users/admin/${email}`)
+        fetch(`https://food-hut-server-five.vercel.app/users/admin/${email}`)
         .then(res => res.json())
         .then(data => {
             setIsAdmin(data.admin);
